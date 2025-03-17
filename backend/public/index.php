@@ -38,3 +38,4 @@ $app->options('/{routes:.+}', function ($request, $response, $args) {
 (require __DIR__ . '/../src/routes.php')($app);
 
 $app->run();
+

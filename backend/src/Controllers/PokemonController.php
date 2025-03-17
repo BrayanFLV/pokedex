@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use GuzzleHttp\Client;
@@ -11,7 +10,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 class PokemonController {
     
     /**
-     * Obtiene la lista de los pokemon desde la API
+     * Obtener la lista de Pokémon desde la API
      */
     public function getAllPokemons(Request $request, Response $response, array $args)
     {
@@ -22,8 +21,7 @@ class PokemonController {
             $apiResponse = $client->get("https://pokeapi.co/api/v2/pokemon?limit=40");
             $data = json_decode($apiResponse->getBody(), true);
 
-            // Transformar los datos para incluir imágenes al momento de mostrarlos
-            // Se agrega un id a cada pokemon para poder obtener la imagen desde la API de sprites de Pokémon
+            // Transformar los datos para incluir imágenes
             $pokemons = array_map(function ($pokemon, $index) {
                 preg_match('/\/pokemon\/(\d+)\//', $pokemon["url"], $matches);
                 $id = $matches[1] ?? ($index + 1);
@@ -36,7 +34,7 @@ class PokemonController {
                 ];
             }, $data["results"], array_keys($data["results"]));
 
-            // aqui se retorna la lista de pokemones
+            // Responder con JSON
             $response->getBody()->write(json_encode(["pokemons" => $pokemons]));
             return $response->withHeader('Content-Type', 'application/json');
         } catch (\Exception $e) {
@@ -46,7 +44,7 @@ class PokemonController {
     }
 
     /**
-     * obtener un pokemon por su id y nombre
+     * Obtener información de un Pokémon por ID o nombre
      */
     public function getPokemon(Request $request, Response $response, array $args) {
         $cache = new FilesystemAdapter();
@@ -86,7 +84,7 @@ class PokemonController {
     }
 
     /**
-     * Buscar Pokémon por nombre y devolver una lista de resultados
+     * Buscar Pokémon por nombre
      */
     public function searchPokemon(Request $request, Response $response, array $args) {
         $queryParams = $request->getQueryParams();
@@ -105,7 +103,7 @@ class PokemonController {
                 return strpos(strtolower($pokemon['name']), $searchTerm) !== false;
             });
 
-            // Si no se encontraron resultados, devolver 404
+            //  Si no se encontraron resultados, devolver 404
             if (empty($filteredResults)) {
                 return $response->withStatus(404)->withHeader('Content-Type', 'application/json')
                     ->withBody(\GuzzleHttp\Psr7\Utils::streamFor(json_encode(["error" => "No se encontraron Pokémon con ese nombre"])));

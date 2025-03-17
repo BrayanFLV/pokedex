@@ -10,14 +10,9 @@ return function (App $app) {
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    // Ruta para obtener la lista de Pokémon
-    $app->get('/pokemon', [PokemonController::class, 'getAllPokemons']);
-
-    // Obtener información de un Pokémon por ID o nombre
-    $app->get('/pokemon/{identifier}', [PokemonController::class, 'getPokemon']);
-
-    // Buscar Pokémon por nombre
-    $app->get('/search', [PokemonController::class, 'searchPokemon']);
+    $app->get('/pokemon/search', [PokemonController::class, 'searchPokemon']);  // Ruta para buscar un Pokémon por nombre
+    $app->get('/pokemon', [PokemonController::class, 'getAllPokemons']); // Ruta para obtener la lista de Pokémon
+    $app->get('/pokemon/{identifier}', [PokemonController::class, 'getPokemon']);// Ruta para obtener información de un Pokémon por ID o nombre
 
     
 };
