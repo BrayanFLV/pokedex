@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8000"; // URL del backend
+const API_BASE_URL = "https://pokedex-production-3a1b.up.railway.app"; // Nueva URL en Railway
+ // URL del backend
 
 export const getPokemons = async (page = 1) => {
   try {
