@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getPokemons, getPokemonById } from "../services/api";
 import { FaSearch } from "react-icons/fa";
 import PokemonModal from "../components/PokemonModal";
-import pokeballImage from "../assets/pokeball.png"; //  Importamos la imagen de la Pokébola lotante
+import pokeballImage from "../assets/pokeball.png"; //  Importamos la imagen de la Pokébola flotante
 import "../styles/Home.css";
 
-// funcionalidad de la página principal
-// Home.js
+// Funcionalidad de la página principal
 const Home = () => { 
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +14,7 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pokemonsPerPage = 10;
-//
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPokemons();
@@ -75,10 +74,10 @@ const Home = () => {
         <div className="pokemon-container">
           {currentPokemons.map((pokemon) => (
             <div key={pokemon.id} className="pokemon-card" onClick={() => openModal(pokemon)}>
-              {/*  Pokébola en la esquina superior derecha */}
+              {/* Pokébola en la esquina superior derecha */}
               <img src={pokeballImage} alt="Pokébola" className="pokeball-card" />
               
-              {/*  ID del Pokémon */}
+              {/* ID del Pokémon */}
               <p className="pokemon-id">#{pokemon.id}</p>
 
               <img src={pokemon.image} alt={pokemon.name} className="pokemon-image" />
@@ -106,3 +105,4 @@ const Home = () => {
 };
 
 export default Home;
+

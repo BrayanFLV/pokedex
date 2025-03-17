@@ -1,25 +1,25 @@
-/* Estilo general */
+/*  Estilos Generales */
 .background {
-  background-color: #060e36; /* ✅ Color de fondo */
+  background-color: #060e36; 
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* ✅ Necesario para las Pokébolas */
+  position: relative;
 }
 
-/*  Contenedor Principal */
+/*  Contenedor Principal  */
 .container {
-  background: rgba(255, 255, 255, 0.9); /* ✅ Fondo translúcido */
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   width: 80%;
-  max-width: 900px;
+  max-width: 1000px;
   text-align: center;
 }
 
-/*  Pokébolas flotantes */
+/*  Pokébolas Flotantes (Decorativas) */
 .pokeball {
   width: 100px;
   height: 100px;
@@ -30,52 +30,28 @@
   animation: float 3s infinite ease-in-out alternate;
 }
 
-.pokeball.left {
-  left: 5%; /*  Posición izquierda */
-}
+.pokeball.left { left: 5%; }
+.pokeball.right { right: 5%; }
 
-.pokeball.right {
-  right: 5%; /*  Posición derecha */
-}
-
-/*  Animación de flotación */
 @keyframes float {
-  from {
-    transform: translateY(-50%) translateX(0);
-  }
-  to {
-    transform: translateY(-60%) translateX(10px);
-  }
+  from { transform: translateY(-50%) translateX(0); }
+  to { transform: translateY(-60%) translateX(10px); }
 }
 
-
-/*  Contenedor general */
-.container {
-  width: 85%;
-  max-width: 1000px;
-  background: rgba(245, 239, 239, 0.942);
-  padding: 20px; 
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-/*  Barra de búsqueda */
+/*  Barra de Búsqueda */
 .search-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
   max-width: 400px;
-  margin: 10px auto; 
+  margin: 10px auto;
   background: white;
   padding: 5px;
   border-radius: 25px;
-
   position: relative;
 }
 
-/*  Input de búsqueda */
 .search-bar {
   width: 100%;
   padding: 8px;
@@ -87,7 +63,6 @@
   color: black;
 }
 
-/*  Icono de lupa */
 .search-icon {
   position: absolute;
   left: 10px;
@@ -95,76 +70,123 @@
   color: black;
 }
 
-/*  Título principal */
+/* === Título === */
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: black; /* ✅ Texto en negro */
+  color: black;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-/*  Contenedor de los Pokémon (Ajustado para mejor visualización) */
+/* === Contenedor de Pokémon (Responsive) === */
+
 .pokemon-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 15px; /* 🔥 Menos espacio entre tarjetas */
-  padding: 15px; /* 🔥 Reducción del padding */
-  justify-items: center;
+  gap: 15px;
+  padding: 15px;
   width: 90%;
   max-width: 1050px;
-  margin: auto;
+  margin: 0 auto; 
+  justify-content: center; 
+  align-items: center;
 }
 
-/*  Card de cada Pokémon */
+/* === Estilos Responsivos === */
+@media (max-width: 1024px) {
+  .pokemon-container {
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .pokemon-container {
+    grid-template-columns: repeat(2, 1fr);
+    width: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokemon-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 70%;
+  }
+}
+
+/* === Tarjeta de Pokémon === */
 .pokemon-card {
   display: flex;
-  flex-direction: column; /* 📌 Asegura que los elementos estén en columna */
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* 📌 Separa la imagen y el nombre */
-  width: 180px; /* 📌 Tamaño del card */
-  height: 220px; /* 📌 Ajustamos la altura */
+  justify-content: space-between;
+  width: 160px;
+  height: 200px;
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  padding: 15px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 10px;
   position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
+
 .pokemon-card:hover {
   transform: scale(1.05);
 }
 
-/*  Imagen del Pokémon */
-
+/* === Imagen del Pokémon === */
 .pokemon-image {
   width: 120px;
   height: 120px;
   object-fit: contain;
 }
 
-/*  Nombre del Pokémon */
+/* === Nombre del Pokémon === */
 .pokemon-name {
   font-size: 16px;
   font-weight: bold;
   color: black;
-  text-transform: capitalize; /* 📌 Primera letra en mayúscula */
-  margin-top: auto; /* 📌 Empuja el nombre hacia abajo */
+  text-transform: capitalize;
 }
 
-/*  Paginación */
+/* === ID del Pokémon === */
+.pokemon-id {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(114, 114, 114);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+/* === Pokébola dentro de la tarjeta === */
+.pokeball-card {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: auto;
+  opacity: 0.6;
+}
+
+/* === Paginación === */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* 🔥 Ajuste menor en el espaciado */
-  margin-top: 15px; /* 🔥 Menos espacio arriba */
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .pagination button {
   background: #0033ff;
-  color: rgb(255, 255, 255);
+  color: white;
   border: none;
   padding: 8px 16px;
   font-weight: bold;
@@ -177,7 +199,7 @@
   cursor: not-allowed;
 }
 
-/*  Fondo oscuro del modal */
+/* === Modal === */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -191,7 +213,6 @@
   z-index: 1000;
 }
 
-/*  Contenido del modal */
 .modal-content {
   background: white;
   padding: 20px;
@@ -202,7 +223,7 @@
   position: relative;
 }
 
-/*  Botón de cierre */
+/* === Botón de cierre del Modal === */
 .close-button {
   position: absolute;
   top: 10px;
@@ -213,87 +234,9 @@
   cursor: pointer;
 }
 
-/*  Título del modal */
-.modal-title {
-  font-size: 1.5rem;
-  color: #060e36;
-  margin-bottom: 10px;
-}
-
-/*  Imagen dentro del modal */
+/* === Imagen dentro del Modal === */
 .modal-image {
   width: 120px;
   height: 120px;
   margin-bottom: 10px;
-}
-
-.pokemon-image {
-  width: 120px; /* ✅ Aumentado (antes era más pequeño) */
-  height: 120px; /* ✅ Manteniendo proporción */
-  object-fit: contain; /* Para que se vea bien sin distorsión */
-  transition: transform 0.2s ease-in-out;
-}
-
-.pokemon-image:hover {
-  transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
-}
-
-/*  Estilo del ID del Pokémon */
-
-.pokemon-id {
-  position: absolute;
-  top: 6px;
-  left: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  color: rgb(114, 114, 114);
-  background: rgba(255, 255, 255, 0.8);
-  padding: 3px 8px;
-  border-radius: 5px;
-}
-
-/*  Reducimos el tamaño de la Pokébola en la esquina superior derecha */
-.pokeball-card {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 22px; /* 
-  height: auto;
-  opacity: 0.6; /* Un poco más de transparencia */
-}
-
-/*  Ajustamos el tamaño del card para que sigan viéndose 10 por vista (5 arriba y 5 abajo) */
-.pokemon-card {
-  position: relative;
-  width: 160px; /* 📌 Más compacto */
-  height: 200px; /* 📌 Ajustado */
-  background: white;
-  border: 2px solid black;
-  border-radius: 10px;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.pokemon-image {
-  width: 120px; /* Ajustamos para que encaje mejor */
-  height: 120px;
-  margin: 10px auto;
-}
-
-.pokemon-name {
-  font-size: 16px; /* Ajustado para mejor visibilidad */
-  font-weight: bold;
-  color: black;
-  text-transform: capitalize;
-}
-
-/*  Asegurar que se muestren 10 Pokémon en pantalla */
-.pokemon-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /*  5 Pokémon por fila */
-  grid-gap: 15px;
-  justify-content: center;
-  align-items: center;
 }
