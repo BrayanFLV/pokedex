@@ -1,0 +1,19 @@
+# Usamos Node.js como base
+FROM node:18-alpine
+
+# Establecemos el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copiamos los archivos del proyecto al contenedor
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+
+# Copiamos el resto de los archivos
+COPY . .
+
+# Exponemos el puerto 3000
+EXPOSE 3000
+
+# Comando por defecto para ejecutar la app
+CMD ["npm", "start"]
