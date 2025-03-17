@@ -135,5 +135,31 @@ Ejemplo de pruebas implementadas:
 - Test para obtener un Pokémon existente
 - Test para manejar error cuando el Pokémon no existe
 
----
+##  Despliegue del Backend en Railway
+
+- Crear una cuenta en Railway: https://railway.app/
+
+- Conectar Railway a GitHub y seleccionar el repositorio del backend.
+
+- Configurar las variables de entorno en Railway:
+
+- PORT=8000
+
+## Iniciar el despliegue y copiar la URL del backend generado.
+
+ - Ejemplo de backend desplegado:🔗 https://pokedex-production-3a1b.up.railway.app/pokemon
+
+## Despliegue del Frontend en Vercel
+
+- Crear una cuenta en Vercel: https://vercel.com/
+
+- Importar el repositorio del frontend desde GitHub.
+
+- Configurar las variables de entorno en Vercel:
+
+- REACT_APP_API_BASE_URL= https://pokedex-one-tawny.vercel.app/
+
+## Hacer deploy y copiar la URL del frontend generado.
+
+ Ejemplo de frontend desplegado:🔗 https://pokedex-one-tawny.vercel.app/
 
