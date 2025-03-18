@@ -2,7 +2,7 @@
 FROM php:8.0-cli
 
 # Define el directorio de trabajo dentro del contenedor
-WORKDIR /var/www/html
+WORKDIR /var/www/html 
 
 # Instala dependencias del sistema y extensiones de PHP necesarias
 RUN apt-get update && \

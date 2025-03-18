@@ -51,6 +51,8 @@ const Home = () => {
     setSelectedPokemon(null);
   };
 
+  
+
   return (
     <div className="background">
       <img src={pokeballImage} alt="Pokébola" className="pokeball left" />
