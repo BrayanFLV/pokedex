@@ -18,7 +18,7 @@ class PokemonController {
 
         try {
             // Obtener lista de Pokémon con un límite de 40
-            $apiResponse = $client->get("https://pokeapi.co/api/v2/pokemon?limit=40");
+            $apiResponse = $client->get("https://pokeapi.co/api/v2/pokemon");
             $data = json_decode($apiResponse->getBody(), true);
 
             // Transformar los datos para incluir imágenes
